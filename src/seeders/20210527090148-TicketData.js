@@ -20,8 +20,8 @@ module.exports = {
         rowAddress: "c",
         colAddress: "7",
         price: 10,
-        createdAt: "2021-08-25T16:12:47.412Z",
-        updatedAt: "2021-08-25T16:12:47.412Z",
+        createdAt: "2023-12-25T16:12:47.412Z",
+        updatedAt: "2023-12-25T16:12:47.412Z",
       },
       {
         id: "3b34b83b-839a-4198-91f3-7f8295cfe26c",
@@ -30,8 +30,8 @@ module.exports = {
         rowAddress: "c",
         colAddress: "8",
         price: 10,
-        createdAt: "2021-08-25T16:12:47.412Z",
-        updatedAt: "2021-08-25T16:12:47.412Z",
+        createdAt: "2023-12-25T16:12:47.412Z",
+        updatedAt: "2023-12-25T16:12:47.412Z",
       },
     ];
     await queryInterface.bulkInsert("Tickets", data, {});

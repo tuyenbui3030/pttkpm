@@ -17,11 +17,11 @@ module.exports = {
         id: "f4973a6f-a3b2-4d7f-936c-2ff9be75fa73",
         userId: 1,
         showtimeId: "f544a2ce-71eb-4f40-94ec-1e0307a54748",
-        bookingTime: "2021-08-25T16:12:47.396Z",
+        bookingTime: "2023-12-25T16:12:47.396Z",
         status: true,
         total: 20,
-        createdAt: "2021-08-25T16:12:47.398Z",
-        updatedAt: "2021-08-25T16:15:58.030Z",
+        createdAt: "2023-12-25T16:12:47.398Z",
+        updatedAt: "2023-12-25T16:15:58.030Z",
       },
     ];
     await queryInterface.bulkInsert("Bookings", data, {});

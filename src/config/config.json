@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "123456789",
-    "database": "touch_cinema_1223",
+    "database": "touch_cinema_122345",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

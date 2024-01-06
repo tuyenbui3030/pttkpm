@@ -7,7 +7,7 @@ module.exports = {
       {
         unsignedName: "trang-ti",
         name: "Trạng tí",
-        openingDay: "2021-4-30",
+        openingDay: "2023-12-30",
         poster: "trang-ti-poster.jpg",
         trailer: "https://www.youtube.com/watch?v=l2XBzUZidig",
         description:
@@ -20,7 +20,7 @@ module.exports = {
       {
         unsignedName: "thien-than-ho-menh",
         name: "Thiên thần hộ mệnh",
-        openingDay: "2021-4-22",
+        openingDay: "2023-12-22",
         poster: "thien-than-ho-menh-poster.jpg",
         trailer: "https://www.youtube.com/watch?v=1H-2FeFOM08",
         description:
@@ -33,7 +33,7 @@ module.exports = {
       {
         unsignedName: "ban-tay-diet-quy",
         name: "Bàn tay diệt quỷ",
-        openingDay: "2021-8-22",
+        openingDay: "2023-12-25",
         poster: "ban-tay-diet-quy-poster.jpg",
         trailer: "https://www.youtube.com/watch?v=uqJ9u7GSaYM",
         description:
@@ -46,7 +46,7 @@ module.exports = {
       {
         unsignedName: "nguoi-nhan-ban",
         name: "Người nhân bản",
-        openingDay: "2021-6-20",
+        openingDay: "2023-12-27",
         poster: "nguoi-nhan-ban-poster.jpg",
         trailer: "https://www.youtube.com/watch?v=JNZv1SgHv68",
         description:
@@ -59,7 +59,7 @@ module.exports = {
       {
         unsignedName: "ho-dia-nguc",
         name: "Hố địa ngục",
-        openingDay: "2021-5-28",
+        openingDay: "2023-12-28",
         poster: "ho-dia-nguc.jpg",
         trailer: "https://www.youtube.com/watch?v=PPrap89FiZI",
         description:
@@ -72,7 +72,7 @@ module.exports = {
       {
         unsignedName: "bo-gia",
         name: "Bố già",
-        openingDay: "2021-9-11",
+        openingDay: "2024-01-01",
         poster: "bo-gia-poster.jpg",
         trailer: "https://www.youtube.com/watch?v=jluSu8Rw6YE",
         description:
@@ -85,7 +85,7 @@ module.exports = {
       {
         unsignedName: "mat-biec",
         name: "Mắt biếc",
-        openingDay: "2021-6-20",
+        openingDay: "2024-01-02",
         poster: "mat-biec-poster.jpg",
         trailer: "https://www.youtube.com/watch?v=KSFS0OfIK2c",
         description:
@@ -98,7 +98,7 @@ module.exports = {
       {
         unsignedName: "doremon-2020",
         name: "DORAEMON 2020",
-        openingDay: "2021-10-01",
+        openingDay: "2023-12-19",
         poster: "doremon.jpg",
         trailer: "https://www.youtube.com/watch?v=WDILZzpgTJQ",
         description:
@@ -111,7 +111,7 @@ module.exports = {
       {
         unsignedName: "lat-mat",
         name: "Lật mặt",
-        openingDay: "2021-6-29",
+        openingDay: "2023-12-18",
         poster: "lat-mat-poster.png",
         trailer: "https://www.youtube.com/watch?v=kBY2k3G6LsM",
         description:
@@ -124,7 +124,7 @@ module.exports = {
       {
         unsignedName: "dua-be",
         name: "Đứa bé",
-        openingDay: "2021-6-20",
+        openingDay: "2023-12-20",
         poster: "dua-be-poster.jpg",
         trailer: "https://www.youtube.com/watch?v=ldBroBrV6Fg",
         description:
@@ -137,7 +137,7 @@ module.exports = {
       {
         unsignedName: "vung-dat-cam-lang-ii",
         name: "VÙNG ĐẤT CÂM LẶNG II",
-        openingDay: "2021-7-20",
+        openingDay: "2023-12-20",
         poster: "vung-dat-cam-lang.jpg",
         trailer: "https://www.youtube.com/watch?v=0hLoZ20qTM8",
         description:
@@ -150,7 +150,7 @@ module.exports = {
       {
         unsignedName: "dem-troi-buoc",
         name: "Đêm trói buộc",
-        openingDay: "2021-6-20",
+        openingDay: "2023-12-20",
         poster: "dem-troi-buoc.jpg",
         trailer: "https://www.youtube.com/watch?v=UyoHbUqaSj0",
         description:
