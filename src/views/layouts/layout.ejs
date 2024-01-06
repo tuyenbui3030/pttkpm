@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Movie Pro
+Version: 1.0.0
+Author: Webstrot
+
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx">
+<!--[endif]-->
+
+<head>
+	<meta charset="utf-8" />
+	<!-- <title>Movie Pro Responsive HTML Template</title> -->
+	<title>Touch cinema - <%-defineContent('titlePage')%></title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta http-equiv="Content-Type" charset="utf-8"/>
+	<meta name="description" content="Movie Pro" />
+	<meta name="keywords" content="Movie Pro" />
+	<meta name="author" content="" />
+	<meta name="MobileOptimized" content="320" />
+	<!--Template style -->
+	<link rel="stylesheet" type="text/css" href="/public/css/animate.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/fonts.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/flaticon.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/owl.carousel.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/owl.theme.default.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/dl-menu.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/nice-select.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/magnific-popup.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/venobox/venobox.css" />
+	<link rel="stylesheet" type="text/css" href="/public/js/plugin/rs_slider/layers.css" />
+	<link rel="stylesheet" type="text/css" href="/public/js/plugin/rs_slider/navigation.css" />
+	<link rel="stylesheet" type="text/css" href="/public/js/plugin/rs_slider/settings.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/style4.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/responsive4.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/responsive.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" />
+
+	<link rel="stylesheet" type="text/css" href="/public/css/dev.css" />
+
+	<link rel="stylesheet" id="theme-color" type="text/css" href="#"/>
+	<!-- favicon links -->
+	<link rel="shortcut icon" type="image/png" href="/public/images//header/favicon.ico" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap" rel="stylesheet">
+	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia"> -->
+
+<style>
+		body {
+			font-family: 'Montserrat', sans-serif;
+		}
+		/* body {
+    	font-family: "Sofia", sans-serif;
+  	} */
+	</style>
+</head>
+
+<body>
+	<!-- preloader Start -->
+	<%- include('../partials/preloader.ejs') %>
+	<!-- preloader end --> 
+
+	<!-- prs navigation Start -->
+	<%- include('../partials/navigation.ejs') %>
+	<!-- prs navigation End -->
+
+	<!-- prs upcomung Slider Start -->
+	<%- body %>
+	<!-- prs upcomung Slider End -->
+
+	<!-- prs footer Wrapper Start -->
+	<%- include('../partials/footer.ejs') %>
+	<!-- prs footer Wrapper End -->
+
+	<!-- st login wrapper Start -->
+
+	<div class="modal modal-dialog-centered fade st_pop_form_wrapper" id="modalBook" role="dialog">
+
+	</div>
+
+	<!-- st login wrapper End -->
+	<!--main js file start-->
+	<!-- <script src="/public/js/jquery_min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+	<script src="/public/js/modernizr.js"></script>
+	<script src="/public/js/bootstrap.js"></script>
+	<script src="/public/js/owl.carousel.js"></script>
+	<script src="/public/js/jquery.dlmenu.js"></script>
+	<script src="/public/js/jquery.sticky.js"></script>
+	<script src="/public/js/jquery.nice-select.min.js"></script>
+	<script src="/public/js/jquery.magnific-popup.js"></script>
+	<script src="/public/js/jquery.bxslider.min.js"></script>
+	<script src="/public/js/venobox/venobox.min.js"></script>
+
+	<script src="/public/js/smothscroll_part1.js"></script>
+	<script src="/public/js/smothscroll_part2.js"></script>
+	<script src="/public/js/plugin/rs_slider/jquery.themepunch.revolution.min.js"></script>
+	<script src="/public/js/plugin/rs_slider/jquery.themepunch.tools.min.js"></script>
+	<script src="/public/js/plugin/rs_slider/revolution.addon.snow.min.js"></script>
+	<script src="/public/js/plugin/rs_slider/revolution.extension.actions.min.js"></script>
+	<script src="/public/js/plugin/rs_slider/revolution.extension.carousel.min.js"></script>
+	<script src="/public/js/plugin/rs_slider/revolution.extension.kenburn.min.js"></script>
+	<script src="/public/js/plugin/rs_slider/revolution.extension.layeranimation.min.js"></script>
+	<script src="/public/js/plugin/rs_slider/revolution.extension.migration.min.js"></script>
+	<script src="/public/js/plugin/rs_slider/revolution.extension.navigation.min.js"></script>
+	<script src="/public/js/plugin/rs_slider/revolution.extension.parallax.min.js"></script>
+	<script src="/public/js/plugin/rs_slider/revolution.extension.slideanims.min.js"></script>
+	<script src="/public/js/plugin/rs_slider/revolution.extension.video.min.js"></script>
+	<!-- <script src="/public/js/custom4.js"></script> -->
+
+	<script src="/public/js/custom.js"></script>
+	<script src="/public/js/dev.js"></script>
+	<!--main js file end-->
+	<%- script %>
+	<script>
+		// $(".cinema-item").on("change", function() {
+		// // Does some stuff and logs the event to the console
+		//   alert($("#cinema-item").val())
+		
+		// });
+	
+		$("#cinema-item").on("change", function() {
+			const chk = $("#cinema-item").val();
+			if(chk === "-1") $('.form-search').get(0).setAttribute('action', '/cinema');
+			else $('.form-search').get(0).setAttribute('action', `/cinema/${chk}`);
+		});
+
+
+
+		$(".btn-booking").on("click", function(e) {
+			e.preventDefault();
+			const movieId = $(this).data("value");
+			$.ajax({
+				url: "/movie/showtime",
+				method: "POST",
+				data: {
+					movieId,
+				},
+				success: function (res) {
+					$("#modalBook").replaceWith(res);
+					$("#modalBook").modal('show');
+				},
+			});
+		});
+
+		$(document).on("click", ".date-showtime", function(e) {
+			e.preventDefault();
+			const date = $(this).data("value");
+			const movieId = $(".showtime").data("value");
+			$.ajax({
+				url: "/movie/showtimeDate",
+				method: "POST",
+				data: {
+					movieId,
+					date,
+				},
+				success: function (res) {
+					$("#home").replaceWith(res);
+				},
+			});
+		});
+	</script>
+</body>
+
+</html>

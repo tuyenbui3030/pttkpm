@@ -1,0 +1,448 @@
+
+
+<div class="page-wrapper">
+  <div class="container-xl">
+    <!-- Page title -->
+    <div class="page-header d-print-none">
+      <div class="row align-items-center">
+        <div class="col">
+          <h2 class="page-title">
+            Quản lý cụm rạp
+          </h2>
+        </div>
+        <!-- Page title actions -->
+        <div class="col-auto ms-auto d-print-none">
+          <div class="btn-list">
+            <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
+              <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Thêm cụm rạp mới
+            </a>
+            <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" aria-label="Create new report">
+              <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-body">
+    <div class="container-xl">
+      <div class="row row-deck row-cards">
+        <div class="col-md-12 col-lg-12">
+          <div class="card" style="height: calc(24rem + 10px)">
+            <div class="card-header">
+              <h3 class="card-title">Danh sách cụm rạp</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table card-table table-vcenter" id="cinemaList">
+                <thead>
+                  <tr>
+                    <th>Tên cụm</th>
+                    <th>Địa chỉ</th>
+                    <th>Số lượng phòng</th>
+                    <th>Phim hiện có</th>
+                    <!-- <th>Doanh thu</th> -->
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% cinemas.forEach(function(cinema) { %>
+                  <tr>
+                    <td>
+                      <%= cinema.name %>
+                      <a href="/cinema/<%= cinema.unsignedName %>" class="ms-1" aria-label="Open website">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></svg>
+                      </a>
+                    </td>
+                    <td class="text-muted"><%= cinema.address %></td>
+                    <td class="text-muted"><%= cinema.totalRoom %> Phòng</td>
+                    <td class="text-muted"><%= cinema.totalMovie %> Phim</td>
+                    <!-- <td class="text-muted" style="position: relative;">
+                      <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-1"></div>
+                    </td> -->
+                    <td class="text-end w-1" style="position: relative;">
+                      <a href="/admin/cinema/<%= cinema.unsignedName %>" class="bg-blue text-white avatar">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="2" /><path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" /></svg>
+                      </a>
+                    </td>
+                    <td class="text-end w-1" style="position: relative;">
+                      <a class="bg-red text-white avatar destroy" data-value="<%= cinema.id %>">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>
+                      </a>
+                    </td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <form action="">
+          <!-- <div class="row">
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label class="form-label">Tên phim</label>
+                    <input type="text" class="form-control" name="name" placeholder="Tên rạp" required="">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label class="form-label">Tên phim</label>
+                    <input type="text" class="form-control" name="name" placeholder="Tên rạp" required="">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label class="form-label">Tên phim</label>
+                    <input type="text" class="form-control" name="name" placeholder="Tên rạp" required="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label"></label>
+                  <input type="text" class="form-control" name="name" placeholder="Tên rạp" required="">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card">
+                <div id="chartStatistical">
+                  <div class="card-body">
+                    <div id="chart-social-referrals" class="chart-lg"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <div class="row align-items-center">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label class="form-label">Từ ngày</label>
+                    <input type="date" class="form-control" name="timeFrom" id="timeFrom" placeholder="Tên rạp" value="" required>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label class="form-label">Đến ngày</label>
+                    <input type="date" class="form-control" name="timeTo" id="timeTo" placeholder="Tên rạp" value="" required>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label class="form-label">Cụm rạp</label>
+                    <select class="form-control" name="cinemaId" id="cinemaId">
+                      <% cinemas.forEach(function(cinema) { %>
+                        <option value="<%= cinema.id %>"><%= cinema.name %></option>
+                      <% }); %>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-auto ms-auto d-print-none d-flex align-items-end">
+                  <div class="mb-3">
+                    <a class="btn btn-primary d-sm-inline-block" id="submitStatistical">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                      Thống kê doanh thu
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Page title actions -->
+
+            <div class="col-md-6">
+              <label class="form-label" id="txtReve">Doanh thu</label>
+              <div class="card">
+                <div class="card-body">
+                  <div id="chartRevenue"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" id="txtAmount">Số lượng đã bán</label>
+              <div class="card">
+                <div class="card-body">
+                  <div id="chartAmount"></div>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <%- include('../partials/footer.ejs') %>
+</div>
+
+
+<%- contentFor('modalNewItem') %>
+
+<div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <!-- <form action="/admin/cinema/new-cinema" id="form_cinema" method="post" enctype="multipart/form-data"> -->
+      <form method="POST" enctype="multipart/form-data">
+        <div class="modal-header">
+          <h5 class="modal-title">Thêm cụm rạp mới</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Tên rạp</label>
+            <input type="text" class="form-control" name="name" placeholder="Tên rạp" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Địa chỉ</label>
+            <input type="text" class="form-control" name="address" placeholder="Địa chỉ rạp" required />
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <label class="form-label">Hình ảnh của rạp</label>
+              <div class="input-field">
+                <div class="input-images" style="padding-top: .5rem;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+            Hủy
+          </a>
+          <!-- <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+            Thêm rạp mới
+          </a> -->
+          <button class="btn btn-primary ms-auto" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+            Thêm cụm rạp mới
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- contentFor() %>
+<%- contentFor('titlePage') %>
+  Quản lý cụm rạp
+<%- contentFor() %>
+<script>
+  const renderChart = (res) => {
+    const optionsRevenue = {
+          chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 240,
+            parentHeightOffset: 0,
+            toolbar: {
+              show: false,
+            },
+            animations: {
+              enabled: false
+            },
+          },
+          fill: {
+            opacity: 1,
+          },
+          stroke: {
+            width: 2,
+            lineCap: "round",
+            curve: "smooth",
+          },
+          series: [{
+            name: "Doanh thu",
+            data: res.total,
+            // data: [722, 1866, 961, 1108, 1110, 561, 1753, 1815, 0, 1985]
+          }],
+          grid: {
+            padding: {
+              top: -20,
+              right: 0,
+              left: -4,
+              bottom: -4
+            },
+            strokeDashArray: 4,
+            xaxis: {
+              lines: {
+                show: true
+              }
+            },
+          },
+          xaxis: {
+            labels: {
+              padding: 0,
+              datetimeFormatter: {
+                year: 'yyyy',
+                month: 'MMM \'yy',
+                day: 'dd MMM',
+                hour: 'HH:mm'
+              }
+            },
+            tooltip: {
+              enabled: false
+            },
+            type: 'datetime',
+          },
+          yaxis: {
+            labels: {
+              padding: 4
+            },
+          },
+          // labels: [
+          //   '2020-06-21T00:00:00.000Z', '2020-06-22T00:00:00.000Z', '2020-06-23T00:00:00.000Z', '2020-06-24T00:00:00.000Z', '2020-06-25T00:00:00.000Z', '2020-06-26T00:00:00.000Z', '2020-06-27T00:00:00.000Z', '2020-06-28T00:00:00.000Z', '2020-06-29T00:00:00.000Z', '2020-06-30T00:00:00.000Z'
+          // ],
+          labels: res.date,
+          colors: ["#3b5998", "#1da1f2", "#ea4c89"],
+          legend: {
+            show: true,
+            position: 'bottom',
+            offsetY: 12,
+            markers: {
+              width: 10,
+              height: 10,
+              radius: 100,
+            },
+            itemMargin: {
+              horizontal: 8,
+              vertical: 8
+            },
+          },
+        }
+        const chartRevenue = new ApexCharts(document.querySelector("#chartRevenue"), optionsRevenue);
+        chartRevenue.render();
+        const optionsAmount = {
+          chart: {
+            type: "line",
+            fontFamily: 'inherit',
+            height: 240,
+            parentHeightOffset: 0,
+            toolbar: {
+              show: false,
+            },
+            animations: {
+              enabled: false
+            },
+          },
+          fill: {
+            opacity: 1,
+          },
+          stroke: {
+            width: 2,
+            lineCap: "round",
+            curve: "smooth",
+          },
+          series: [{
+            name: "Số lượng",
+            data: res.count,
+            // data: [13281, 8521, 15038, 9983, 15417, 8888, 7052, 14270, 0, 5214]
+          }],
+          grid: {
+            padding: {
+              top: -20,
+              right: 0,
+              left: -4,
+              bottom: -4
+            },
+            strokeDashArray: 4,
+            xaxis: {
+              lines: {
+                show: true
+              }
+            },
+          },
+          xaxis: {
+            labels: {
+              padding: 0,
+            },
+            tooltip: {
+              enabled: false
+            },
+            type: 'datetime',
+          },
+          yaxis: {
+            labels: {
+              padding: 4
+            },
+          },
+          // labels: [
+          //   '2020-06-21T00:00:00.000Z', '2020-06-22T00:00:00.000Z', '2020-06-23T00:00:00.000Z', '2020-06-24T00:00:00.000Z', '2020-06-25T00:00:00.000Z', '2020-06-26T00:00:00.000Z', '2020-06-27T00:00:00.000Z', '2020-06-28T00:00:00.000Z', '2020-06-29T00:00:00.000Z', '2020-06-30T00:00:00.000Z'
+          // ],
+          labels: res.date,
+          colors: ["#3b5998", "#1da1f2", "#ea4c89"],
+          legend: {
+            show: true,
+            position: 'bottom',
+            offsetY: 12,
+            markers: {
+              width: 10,
+              height: 10,
+              radius: 100,
+            },
+            itemMargin: {
+              horizontal: 8,
+              vertical: 8
+            },
+          },
+        }
+        const chartAmount = new ApexCharts(document.querySelector("#chartAmount"), optionsAmount);
+        chartAmount.render();
+        
+  }
+  $(document).ready(function(){
+    $('.input-images').imageUploader();
+  });
+
+  $("#cinemaList").on("click", ".destroy", function() {
+    const cinemaId = $(this).data("value");
+    const objCinema = $(this);
+    const valueAlert = confirm("Lưu ý: Các dữ liệu suất chiếu, phim, hình ảnh liên quan đến rạp sẽ bị xóa!");
+    if(!valueAlert) return;
+    $.ajax({
+      url: "/admin/cinema/destroy",
+      method: "POST",
+      data: {
+        cinemaId,
+      },
+      success: function (res) {
+        objCinema.closest('tr').remove();
+      },
+    });
+  });
+  $(document).on("click", "#submitStatistical", function(e) {
+    const cinemaId = $("#cinemaId").val();
+    const timeTo = $("#timeTo").val();
+    const timeFrom = $("#timeFrom").val();
+
+    $.ajax({
+      url: "/admin/statistical/cinema",
+      method: "POST",
+      data: {
+        timeFrom,
+        timeTo,
+        cinemaId,
+      },
+      success: function (res) {
+        $("#txtReve").text(`Doanh thu ${res.labelTotal ? res.labelTotal : '0'} $`);
+        $("#txtAmount").text(`Số vé đã bán ${res.labelCount ? res.labelCount : '0'} vé`);
+        $("#chartRevenue").replaceWith('<div id="chartRevenue"></div>');
+        $("#chartAmount").replaceWith('<div id="chartAmount"></div>');
+        renderChart(res)
+      },
+    });
+
+  });
+
+  renderChart({date:[], count:[], total:[]})
+
+</script>

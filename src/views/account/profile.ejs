@@ -1,0 +1,98 @@
+<div class="prs_title_main_sec_wrapper">
+  <div class="prs_title_img_overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="prs_title_heading_wrapper">
+          <h2>Trang cá nhân</h2>
+          <ul>
+            <li><a href="#">Trang chủ</a>
+            </li>
+            <li>&nbsp;&nbsp; >&nbsp;&nbsp; Thông tin cá nhân</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- prs title wrapper End -->
+<!-- hs sidebar Start -->
+<div class="hs_blog_categories_main_wrapper hs_blog_categories_main_wrapper2">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="hs_blog_left_sidebar_main_wrapper">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="hs_blog_box1_main_wrapper">
+                <div class="hs_blog_box1_cont_main_wrapper">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="text-profile text-center">Thông tin cá nhân</h1>
+                    <div class="hs_rs_comment_main_wrapper">
+                      <h2 class="info-profile"><%= infoUser.fullname %>
+                        <br>
+                        <span>Số điện thoại: <%= infoUser.phone %></span>
+                        <br>
+                        <span>Email: <%= infoUser.email %></span>
+                        <br>
+                        <a href="/account/edit" class="edit-profile">Edit Profile</a> |
+                        <a href="/account/change-password" class="edit-profile">Password Change</a>
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+                
+              
+              </div>
+            </div>
+            
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="prs_bs_comment_heading_wrapper">
+                <h2>Lịch sử mua vé</h2>
+              </div>
+            </div>
+            <% listTicket.forEach(function(ticket) { %>
+            <div class="st_bcc_tecket_bottom_hesder float_left" style="background-color: white;">
+              <div class="st_bcc_tecket_bottom_left_wrapper">
+                <div class="st_bcc_tecket_bottom_inner_left">
+                  <div class="st_bcc_teckt_bot_inner_img">
+                    <img src="/public/images/content/<%= ticket.poster %>" style="width: 100px;" alt="img">
+                  </div>
+                  <div class="st_bcc_teckt_bot_inner_img_cont">
+                    <h4><%= ticket.movie %></h4>
+                    <h5><b>Rạp:</b> <%= ticket.cinema %></h5>
+                    <h5><b>Phòng:</b> <%= ticket.room %> | <b>Loại:</b> <%= ticket.typeRoom %></h5>
+                    <h5><b>Ngày chiếu:</b> <%= moment(ticket.timeStart).format('L'); %> | <%= moment(ticket.timeStart).format('LT'); %></h3>
+                    <h5><b>Ngày mua:</b> <%= moment(ticket.bookingTime).format('L'); %> | <%= moment(ticket.bookingTime).format('LT'); %></h3>
+
+                    <!-- <h6>
+                      Carnival: Artech Central Mall,<br> 
+                      Trivandrum Audi-5
+                    </h6> -->
+                  </div>
+                  <div class="st_purchase_img">
+                    <img src="/public/images/content/pur2.png" alt="img">
+                  </div>
+                </div>
+                <div class="st_bcc_tecket_bottom_inner_right">	<i class="fas fa-chair"></i>
+                  <h3>
+                    TICKET<br>
+                    <span>Ghế - <%= ticket.seat %></span>
+                  </h3>
+                </div>
+              </div>
+              <div class="st_bcc_tecket_bottom_right_wrapper">
+                <img style="width: 170px;" src="<%= ticket.qrCode %>" alt="img">
+              </div>
+              <div class="st_bcc_tecket_bottom_left_price_wrapper">
+                <h4>Giá vé</h4>
+                <h5>$ <%= ticket.price %></h5>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

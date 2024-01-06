@@ -1,0 +1,41 @@
+{
+  "name": "Tech-cinema",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app",
+    "dev": "nodemon src/app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "cookie-session": "^1.4.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-ejs-layouts": "^2.5.0",
+    "moment": "^2.29.1",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.6.0",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "paypal-rest-sdk": "^1.8.1",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
+    "qrcode": "^1.4.4",
+    "randomstring": "^1.2.1",
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0",
+    "socket.io": "^4.1.2",
+    "twilio": "^3.63.0",
+    "util": "^0.12.4",
+    "uuid": "^8.3.2"
+  }
+}

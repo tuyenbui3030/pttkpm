@@ -1,0 +1,103 @@
+<div class="prs_mc_slider_main_wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="prs_mcc_right_side_wrapper">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="prs_mcc_right_side_heading_wrapper">
+                <h2>Toàn bộ phim tại hệ thống rạp phim touch cinema</h2>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="tab-content">
+                <div id="grid" class="tab-pane fade in active">
+                  <div class="row">
+                    <% movies.forEach(function(movie) { %>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 prs_upcom_slide_first">
+                      <div class="prs_upcom_movie_box_wrapper prs_mcc_movie_box_wrapper">
+                        <div class="prs_upcom_movie_img_box">
+                          <img src="/public/images/content/<%= movie.poster %>" alt="movie_img" />
+                          <div class="prs_upcom_movie_img_overlay"></div>
+                          <div class="prs_upcom_movie_img_btn_wrapper">
+                            <ul>
+                              <li>
+                                <a class="venobox" data-autoplay="true" data-vbtype="video" href="<%= movie.trailer %>">Xem Trailer</a>
+                              </li>
+                              <li>
+                                <a href="/detail/<%= movie.unsignedName %>">Xem chi tiết</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="prs_upcom_movie_content_box">
+                          <div class="prs_upcom_movie_content_box_inner">
+                            <h2 class="ellipsis"><a href="/detail/<%= movie.unsignedName %>"><%= movie.name %></a></h2>
+                          </div>
+                          <div class="prs_upcom_movie_content_box_inner_icon">
+                            <ul>
+                              <li>
+                                <!-- <a href="#" data-toggle="modal" data-target="#modalBook" target="_blank"><i class="flaticon-cart-of-ecommerce"></i></a> -->
+                                <a href="#" data-value="<%= movie.id %>" class="btn-booking" ><i class="flaticon-cart-of-ecommerce"></i></a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% }) %>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="pager_wrapper gc_blog_pagination">
+                        <ul class="pagination">
+                          <li>
+                            <% if(canPrev) { %>
+                              <a href="?movie=<%=query%>&page=<%=prev%>">
+                                <i class="flaticon-left-arrow"></i>
+                              </a>
+                            <% } else { %>
+                              <a href="javascript:void(0)">
+                                <i class="flaticon-left-arrow"></i>
+                              </a>
+                            <% } %>
+                          </li>
+                          <% pageItems.forEach(function(page) { %>
+                            <li class="<%= page.isActive?"active":""%>">
+                              <a href="?movie=<%=query%>&page=<%= page.value %>"><%= page.value %></a>
+                            </li>
+                          <% }) %>
+                          <!-- <li class="active"><a href="#">1</a>
+                          </li>
+                          <li><a href="#">2</a>
+                          </li>
+                          <li class="prs_third_page"><a href="#">3</a>
+                          </li>
+                          <li class="hidden-xs"><a href="#">4</a>
+                          </li> -->
+                          <li>
+                            <% if(canNext) { %>
+                              <a href="?movie=<%=query%>&page=<%=next%>">
+                                <i class="flaticon-right-arrow"></i>
+                              </a>
+                            <% } else { %>
+                              <a href="javascript:void(0)">
+                                <i class="flaticon-right-arrow"></i>
+                              </a>
+                            <% } %>
+                          </li>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- contentFor('titlePage') %>
+  Tất cả phim
+<%- contentFor() %>

@@ -1,0 +1,128 @@
+	<!-- prs video top Start -->
+	<div class="prs_top_video_section_wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="st_video_slider_inner_wrapper float_left">
+						<div class="st_video_slider_overlay"></div>
+						<div class="st_video_slide_sec float_left">
+							<a class="venobox" data-autoplay="true" data-vbtype="video" href="<%= movie.trailer %>">
+								<img src="/public/images/index_III/icon.png" alt="img">
+							</a>
+							<h3><%= movie.name %></h3>
+							<!-- <p>ENGLISH, HINDI, TAMIL</p>
+							<h4>ACTION | Adventure | Fantasy</h4>
+							<h5><span>2d</span> <span>3d</span> <span>D 4DX</span> <span>Imax 3D</span></h5> -->
+						</div>
+						<div class="st_video_slide_social float_left">
+							<div class="st_video_slide_social_left float_left">
+								<ul>
+									<li><a href="#"><i class="fa fa-facebook-f"></i></a>
+									</li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a>
+									</li>
+									<li><a href="#"><i class="fa fa-linkedin"></i></a>
+									</li>
+									<li><a href="#"><i class="fa fa-youtube"></i></a>
+									</li>
+								</ul>
+							</div>
+							<div class="st_video_slide_social_right float_left">
+								<ul>
+									<li data-animation="animated fadeInUp" class=""><i class="far fa-calendar-alt"></i>Ngày công chiếu <%= moment(movie.openingDay).format('L') %></li>
+									<li data-animation="animated fadeInUp" class=""><i class="far fa-clock"></i><%= movie.time %> phút</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- prs video top End -->
+	<!-- st slider rating wrapper Start -->
+	<div class="st_slider_rating_main_wrapper float_left">
+		<div class="container">
+			<div class="st_slider_rating_left">
+				<div class="st_rating_box">
+					<fieldset class="rating">
+						<h3>Phim: <%= movie.name %></h3>
+					</fieldset>
+					<h3><%= movie.time %> phút</h4>
+				</div>
+			</div>
+			<div class="st_slider_rating_right">
+				<div class="st_slider_rating_btn prs_animate_btn1">
+					<ul>
+						<li data-animation="animated fadeInUp">
+							<a href="#" class="button button--tamaya prs_upcom_main_btn btn-booking" data-value="<%= movie.id %>" data-text="Đặt vé" >
+								<span>Đặt vé</span>
+							</a>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- st slider rating wrapper End -->
+  	<!-- prs syn Slider Start -->
+	<div class="prs_syn_main_section_wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+					<div class="prs_syn_cont_wrapper">
+						<h3>Giới thiệu</h3>
+						<!-- <h4><span>Genre -</span> Action , Reality , Drama, Raching</h4> -->
+						<p><%= movie.description %></p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="prs_syn_img_wrapper">
+						<img src="/public/images/content/<%= movie.poster %>" alt="syn_img">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- prs syn Slider End -->
+
+	<div class="prs_gallery_main_section_wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="prs_heading_section_wrapper">
+						<h2>Hình ảnh trong phim</h2>
+					</div>
+				</div>
+				<div class="portfolio-area ptb-100">
+					<div class="container">
+
+						<div class="row three-column">
+							<div id="gridWrapper" class="clearfix">
+								
+								<% movie.MoviePhotos.forEach(function(photo) { %>
+								<div class="col-xs-12 col-sm-6 col-md-4 portfolio-wrapper III_column" data-groups='["all", "website", "logo"]'>
+									<div class="portfolio-thumb">
+										<div class="gc_filter_cont_overlay_wrapper prs_ms_scene_slider_img">
+											<img src="/public/images/content/<%= photo.name %>" class="zoom image img-responsive" alt="service_img" />
+											<div class="prs_ms_scene_img_overlay">	<a href="/public/images/content/<%= photo.name %>" class="venobox info" data-title="PORTFOLIO TITTLE" data-gall="gall12"><i class="flaticon-tool"></i></a>
+											</div>
+										</div>
+									</div>
+									<!-- /.portfolio-thumb -->
+								</div>
+								<% }); %>
+							</div>
+							<!--/#gridWrapper-->
+						</div>
+					</div>
+					<!-- /.container -->
+				</div>
+				<!--/.portfolio-area-->
+			</div>
+		</div>
+	</div>
+<%- contentFor('titlePage') %>
+  Phim <%= movie.name %>
+<%- contentFor() %>

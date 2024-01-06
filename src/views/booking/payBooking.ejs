@@ -1,0 +1,149 @@
+<div class="st_bt_top_header_wrapper float_left">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+        <!-- <div class="st_bt_top_back_btn float_left">	<a href="index.html"><i class="fas fa-long-arrow-alt-left"></i> &nbsp;Back</a>
+        </div> -->
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+        <div class="st_bt_top_center_heading float_left">
+          <h3><%= showtime.Movie.name %> - (<%= showtime.Movie.time %> phút)</h3>
+					<h4><%= moment(showtime.timeStart).lang("vi").calendar(); %></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- st top header Start -->
+<!-- st dtts section Start -->
+<div class="st_dtts_wrapper float_left">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+        <div class="st_dtts_left_main_wrapper float_left">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="st_dtts_bs_heading float_left">
+                <p>Thông tin đặt chỗ</p>
+              </div>
+              <div class="st_dtts_ineer_box float_left">
+                <ul>
+                  <li>
+                    <span class="dtts1">Ngày</span>
+                    <span class="dtts2"><%= moment(showtime.timeStart).format("DD/MM/YYYY"); %></span>
+                  </li>
+                  <li>
+                    <span class="dtts1">Thời gian</span>
+                    <span class="dtts2"><%= moment(showtime.timeStart).format("LT") %></span>
+                  </li>
+                  <li>
+                    <span class="dtts1">Rạp</span> 
+                    <span class="dtts2"><%= showtime.Room.Cinema.name %></span>
+                  </li>
+                  <li>
+                    <span class="dtts1">Phòng</span> 
+                    <span class="dtts2"><%= showtime.Room.name %> - Loại: <%= showtime.Room.Typeroom.type %></span>
+                  </li>
+                  <li>
+                    <span class="dtts1">Ghế</span>
+                    <span class="dtts2"><%= seat %> - <%= qtySeat %> vé</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- <div class="col-md-12">
+              <div class="st_cherity_section float_left">
+                <div class="st_dtts_bs_heading float_left">
+                  <p>Chọn hình thức thanh toán</p>
+                </div>
+                <div class="st_cherity_img_cont float_left">
+                  <div class="box">
+                    <p class="cc_pc_color1">
+                      <input type="checkbox" id="zalo" name="cb">
+                      <label for="zalo">
+                        <span class="pm_icon" style="background-image:url('https://www.cgv.vn/media/catalog/product/placeholder/default/zalopay_icon.png')"></span>
+                        <span class="pm_name method_label pm_diff">ZaloPay</span>
+                      </label>
+                    </p>
+                  </div>
+                  <div class="box">
+                    <p class="cc_pc_color1">
+                      <input type="checkbox" id="momo" name="cb">
+                      <label for="momo">
+                        <span class="pm_icon" style="background-image:url('https://www.cgv.vn/media/catalog/product/placeholder/default/momo_icon.png')"></span>
+                        <span class="pm_name method_label pm_diff">Ví MoMo</span>
+                      </label>
+                    </p>
+                  </div>
+                  <div class="box">
+                    <p class="cc_pc_color1">
+                      <input type="checkbox" id="paypal" name="cb">
+                      <label for="paypal">
+                        <span class="pm_icon" style="background-image:url('/public/images/content/paypal-4-226455.png')"></span>
+                        <span class="pm_name method_label pm_diff">Paypal</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="st_dtts_bs_wrapper float_left">
+              <div class="st_dtts_bs_heading float_left">
+                <p>Thông tin thanh toán</p>
+              </div>
+              <div class="st_dtts_sb_ul float_left">
+                <ul>
+                  <li><%= showtime.Movie.name %> - <%= seat %> - <%= qtySeat %> vé
+                    <br><%= showtime.Room.Cinema.name %> | <%= showtime.Room.name %> | <%= showtime.Room.Typeroom.type %>
+                    <span><%= qtySeat %> x <%= priceTicket %>$</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="st_dtts_sb_h2 float_left">
+                <h3>Tạm tính <span><%= total %>$</span></h3>
+                <h5>Tổng <span><%= total %>$</span></h5>
+              </div>
+            </div> 
+            <form id="actionPay" action="/booking/actionPay" method="post">
+              <!-- <button class="pay-btn" type="submit">Thanh toán</button> -->
+              <!-- <button class="pay-btn" type="submit">Thanh toán</button> -->
+            </form>
+            <div class="st_seatlay_btn float_left">
+              <!-- <a href="">Tiếp tục</a> -->
+              <button class="pay-btn" type="submit" form="actionPay">Thanh toán</button>
+            </div>
+            <!-- <form action="/booking/actionPay" method="post">
+              <button class="pay-btn" type="submit">Thanh toán</button>
+            </form> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- contentFor('titlePage') %>
+  Thanh toán
+<%- contentFor() %>
+<script>
+  $("input:checkbox").on('click', function() {
+    // in the handler, 'this' refers to the box clicked on
+    var $box = $(this);
+    if ($box.is(":checked")) {
+      // the name of the box is retrieved using the .attr() method
+      // as it is assumed and expected to be immutable
+      var group = "input:checkbox[name='" + $box.attr("name") + "']";
+      // the checked state of the group/box on the other hand will change
+      // and the current value is retrieved using .prop() method
+      $(group).prop("checked", false);
+      $box.prop("checked", true);
+    } else {
+      $box.prop("checked", false);
+    }
+  });
+</script>

@@ -1,0 +1,190 @@
+	<!-- color picker start -->
+	<!-- st top header Start -->
+	<div class="st_bt_top_header_wrapper float_left">
+		<div class="container container_seat">
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="st_bt_top_back_btn st_bt_top_back_btn_seatl float_left">	<a href="movie_booking.html"><i class="fas fa-long-arrow-alt-left"></i> &nbsp;Back</a>
+					</div>
+					<!-- <div class="cc_ps_quantily_info cc_ps_quantily_info_tecket">
+						<p>Select Ticket</p>
+											<div class="select_number">
+												<button onclick="changeQty(1); return false;" class="increase"><i class="fa fa-plus"></i>
+												</button>
+												<input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
+												<button onclick="changeQty(0); return false;" class="decrease"><i class="fa fa-minus"></i>
+												</button>
+											</div>
+											<input type="hidden" name="product_id" />
+										</div> -->
+					</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left">
+						<h3><%= showtime.Movie.name %> - (<%= showtime.Movie.time %> phút)</h3>
+						<h4><%= moment(showtime.timeStart).lang("vi").calendar(); %></h4>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="st_bt_top_close_btn st_bt_top_close_btn2 float_left">	<a href="#"><i class="fa fa-times"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- st top header Start -->
+	<!-- st seat Layout Start -->
+	<div class="st_seatlayout_main_wrapper float_left">
+		<div class="container container_seat">
+			<div class="st_seat_lay_heading float_left">
+				<h3>screen</h3>
+			</div>
+			<div class="st_seat_full_container">
+				<div class="st_seat_lay_economy_wrapper float_left">
+					<div class="screen">
+						<img src="/public/images/content/screen.png">
+					</div>
+				</div>
+				<form action="/booking/pay" id="booking_seat" name="booking_seat" method="post">
+					<input type="hidden" name="priceTicket" id="price-ticket" value="<%= showtime.price %>"/>
+					<input type="hidden" name="showtimeId" value="<%= showtime.uuid %>">
+					<div class="st_seat_lay_economy_wrapper st_seat_lay_economy_wrapperexicutive float_left">
+						<% for(const rows of mapRoom) { %>
+						<div class="st_seat_lay_row float_left d-flex justify-content-center">
+							<ul>
+								<!-- <li class="st_seat_heading_row">A</li> -->
+								<% for(const item of rows) { %>
+									<li id="seat-<%= item.seat %>" class="<%= item.status?"select_seat":"seat_disable" %>">	
+										<input type="checkbox" class="seat_checked" id="<%= item.seat %>" value="<%= item.seat %>" name="cb[]"/>
+										<label for="<%= item.seat %>"></label>
+									</li>
+								<% } %>
+							</ul>
+						</div>
+						<% } %>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- st seat Layout End -->
+  <div class="st_bt_top_header_wrapper float_left">
+		<div class="container container_seat">
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left footer-seat">
+						<h3><b>Phim:</b> <%= showtime.Movie.name %></h3>
+            <h4><b>Thời lượng:</b> <%= showtime.Movie.time %> phút</h4>
+						<h4><b>Rạp:</b> <%= showtime.Room.Cinema.name %></h4>
+            <h4><b>Phòng chiếu:</b> <%= showtime.Room.name %> | <%= showtime.Room.Typeroom.type %></h4>
+						<h4><b>Suất chiếu:</b> <%= moment(showtime.timeStart).lang("vi").calendar(); %></h4>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left footer-seat">
+						<h4><b>Giá vé: </b><%= showtime.price %> $</h4>
+            <h4><b>Số lượng: </b><span class="item-qty">0</span> vé</h4>
+						<h4><b>Tổng tiền: </b><span class="item-total">0</span> $</h4>
+						<h4><b>Ghế: </b><span class="item-seat"></span></h4>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="st_seatlay_btn float_left">
+						<!-- <a href="">Tiếp tục</a> -->
+						<button type="submit" form="booking_seat">Tiếp tục</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%- contentFor('titlePage') %>
+		Chọn ghế
+	<%- contentFor() %>
+	<script>
+		const socket = io('http://localhost:3000')
+		//socket.on("connection");
+		// const sendMessage = () => {
+		// 	socket.emit('message', "hey")
+		// }
+		// socket.emit("joinRoom", "Hello");
+		// socket.on("success", (res) => console.log(res));
+		// socket.on("message", (data) => {
+		// 	$(`#seat-${data}`).addClass("seat_disable");
+		// 	$(`#seat-${data}`).removeClass("select_seat");
+		// 	// document.querySelector("#yeye").innerHTML = data
+		// })
+
+		socket.emit("join-room", "<%= showtime.uuid %>");
+		socket.on("showtime", (data) => {
+			const disable = $(`#seat-${data}`).hasClass("seat_disable");
+			if(disable) {
+				$(`#seat-${data}`).removeClass("seat_disable");
+				// $(`#seat-${data}`).addClass("select_seat");
+			} else {
+				$(`#seat-${data}`).addClass("seat_disable");
+				// $(`#seat-${data}`).removeClass("select_seat");
+			}
+		})
+
+		$(document).on("click", ".select_seat", function(e) {
+			e.preventDefault();
+			const valueSeat = $(this).find(".seat_checked").val();
+			const disable = $(this).hasClass("seat_disable");
+			if(disable) return;
+			const seatChecked = ($(this).find(".seat_checked").attr("id"));
+			if($(`#${seatChecked}`).is(':checked')) {
+				$(`#${seatChecked}`).prop('checked', false);
+				console.log("xóa");
+				$.ajax({
+					url: "/booking/delCart",
+					method: "POST",
+					data: {
+						showtimeId: "<%= showtime.uuid %>",
+						seat: valueSeat,
+					},
+					success: function (res) {
+						console.log(res);
+					},
+				});
+			} else {
+				$(`#${seatChecked}`).prop('checked', true);
+				$.ajax({
+					url: "/booking/addCart",
+					method: "POST",
+					data: {
+						showtimeId: "<%= showtime.uuid %>",
+						seat: valueSeat,
+					},
+					success: function (res) {
+						console.log(res);
+					},
+				});
+			}
+			const item = ($(this).find(".seat_checked").val());
+			socket.emit("send-message", item, "<%= showtime.uuid %>");
+
+			let seatSelect = [];
+			$('.seat_checked:checkbox:checked').each(function() {
+				let newSeat = $(this).attr("id");
+				if(!seatSelect.includes(newSeat)) {
+					seatSelect.push(newSeat);
+				}
+			});
+			let priceTicket = Number($("#price-ticket").val());
+			let qtyTicket = Number($('.seat_checked:checkbox:checked').length);
+			let total = priceTicket * qtyTicket;
+			$(".item-qty").text(qtyTicket);
+			$(".item-total").text(total);
+			$(".item-seat").text(seatSelect.join(', '));	
+
+		});
+
+		$("#booking_seat").on("submit", function (e) {
+			e.preventDefault();
+			let qtyTicket = Number($('.seat_checked:checkbox:checked').length);
+			if(qtyTicket < 1) {
+				alert("Vui lòng chọn ghế để tiếp tục");
+			} else {
+				$("#booking_seat").off("submit").submit();
+			}
+		});
+	</script>
